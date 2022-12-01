@@ -1,14 +1,14 @@
 def calorie_counting(array)
   elf_number = 1
-  calorie_total = {}
+  calorie_totals = {}
   for elf in array
     sum = 0
     amount_carrying = elf.split("\n")
     amount_carrying.each {|num| sum += num.to_i}  
-    calorie_total[elf_number] = sum
+    calorie_totals[elf_number] = sum
     elf_number += 1
   end
-  return calorie_total
+  return calorie_totals
 end
 
 def find_elf_carrying_most_calories(dictionary)
