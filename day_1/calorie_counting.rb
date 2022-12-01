@@ -24,9 +24,15 @@ def find_elf_carrying_most_calories(dictionary)
   return greatest_amount_of_calories
 end
 
+def sum_top_three_most_calories(dictionary)
+  sorted_calories = dictionary.values.sort
+  return sorted_calories[-3..].inject {|sum,value| sum += value}
+end
+
 calories = File.open('elf_calories.txt', 'r') do |file|
   file.readlines.join
 end
 
 calories_dict = calorie_counting(calories.split("\n\n"))
 p find_elf_carrying_most_calories(calories_dict)
+p sum_top_three_most_calories(calories_dict)
