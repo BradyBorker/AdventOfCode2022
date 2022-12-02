@@ -4,13 +4,10 @@ def shape_to_play(game_ending, opponent_choice)
   shape_score = { 'A' => 1, 'B' => 2, 'C' => 3 }
  
   if game_ending == 'Z'
-    # need to win
     winning_hand[opponent_choice]
   elsif game_ending == 'Y'
-    # Need to draw
     shape_score[opponent_choice]
   else
-    # Need to lose
     losing_hand[opponent_choice]
   end
 end
