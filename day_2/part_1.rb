@@ -1,5 +1,6 @@
 def rock_paper_scissors(player_choice, opponent_choice)
   interpret_choices = { 'A': 'Rock', 'B': 'Paper', 'C': 'Scissors', 'X': 'Rock', 'Y': 'Paper', 'Z': 'Scissors' }
+
   return 3 if interpret_choices[player_choice.to_sym] == interpret_choices[opponent_choice.to_sym]
 
   if player_choice == 'X' && opponent_choice == 'C'
