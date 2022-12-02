@@ -1,13 +1,12 @@
 def rock_paper_scissors(player_choice, opponent_choice)
   interpret_choices = { 'A': 'Rock', 'B': 'Paper', 'C': 'Scissors', 'X': 'Rock', 'Y': 'Paper', 'Z': 'Scissors' }
-
   return 3 if interpret_choices[player_choice.to_sym] == interpret_choices[opponent_choice.to_sym]
 
-  if interpret_choices[player_choice.to_sym] == 'Rock' && interpret_choices[opponent_choice.to_sym] == 'Scissors'
+  if player_choice == 'X' && opponent_choice == 'C'
     6
-  elsif interpret_choices[player_choice.to_sym] == 'Paper' && interpret_choices[opponent_choice.to_sym] == 'Rock'
+  elsif player_choice == 'Y' && opponent_choice == 'A'
     6
-  elsif interpret_choices[player_choice.to_sym] == 'Scissors' && interpret_choices[opponent_choice.to_sym] == 'Paper'
+  elsif player_choice == 'Z' && opponent_choice == 'B'
     6
   else
     0
