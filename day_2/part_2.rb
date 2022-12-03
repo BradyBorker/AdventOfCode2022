@@ -1,6 +1,6 @@
 def shape_to_play(game_ending, opponent_choice)
   winning_hand = { 'A' => 2, 'B' => 3, 'C' => 1 }
-  losing_hand = { 'A' => 3, 'B' => 1, 'C' => 2}
+  losing_hand = { 'A' => 3, 'B' => 1, 'C' => 2 }
   shape_score = { 'A' => 1, 'B' => 2, 'C' => 3 }
  
   if game_ending == 'Z'
