@@ -10,8 +10,8 @@ def format_assignment_times(input)
   formatted_assignment_times
 end
 
-def compare_assignment_times(lower_1, upper_1, lower_2, upper_2)
-  return true if lower_1 <= lower_2 && upper_1 >= upper_2
+def is_contained(lower_1, upper_1, lower_2, upper_2)
+  return true if lower_1 <= lower_2 && upper_1 >= upper_2 || lower_2 <= lower_1 && upper_2 >= upper_1
 end
 
 def find_contained_pairs(assignment_times)
@@ -22,7 +22,7 @@ def find_contained_pairs(assignment_times)
     lower_2 = assignments[1][0].to_i
     upper_2 = assignments[1][1].to_i
     
-    contained_pairs += 1 if compare_assignment_times(lower_1, upper_1, lower_2, upper_2) || compare_assignment_times(lower_2, upper_2, lower_1, upper_1)
+    contained_pairs += 1 if is_contained(lower_1, upper_1, lower_2, upper_2)
   end
   contained_pairs
 end
