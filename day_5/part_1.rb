@@ -1,13 +1,3 @@
-def move_crates(commands, crate_stacks)
-  amount_to_move = commands[0]
-  from = commands[1]
-  to = commands[2]
-
-  commands.each do |command|
-    p command
-  end
-end
-
 def parse_line(row_of_crates, crate_stacks)
   stack_number = 1
   row_of_crates.each do |crate|
@@ -15,6 +5,28 @@ def parse_line(row_of_crates, crate_stacks)
     stack_number += 1
   end 
   crate_stacks
+end
+
+def move_crates(commands, crate_stacks)
+  commands.each do |command|
+    amount_to_move = command[0].to_i
+    from = command[1].to_i
+    to = command[2].to_i
+    
+    amount_to_move.times do
+      top_crate = crate_stacks[from].shift
+      crate_stacks[to].unshift(top_crate)
+    end
+  end
+  crate_stacks
+end
+
+def find_top_crate_each_stack(moved_crates)
+  top_letters = ''
+  moved_crates.values.each do |stack|
+    top_letters += stack[0]
+  end
+  top_letters
 end
 
 crate_stacks = Hash.new([])
@@ -31,5 +43,4 @@ end
 
 moved_crates = move_crates(commands, crate_stacks)
 
-
-
+p find_top_crate_each_stack(moved_crates)
