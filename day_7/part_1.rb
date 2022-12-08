@@ -23,6 +23,17 @@ def add_up_all_directories(file_paths_and_sizes, path_sizes=Hash.new(0))
   add_up_all_directories(file_paths_and_sizes, path_sizes)
 end
 
+def find_directory_to_delete(added_up)
+  unused_space = 70_000_000 - added_up[["/"]]
+  can_be_deleted = []
+  added_up.values.each do |amount|
+    if unused_space + amount >= 30_000_000
+      can_be_deleted.append(amount)
+    end
+  end
+  can_be_deleted.min
+end
+
 input_list = File.open('input.txt', 'r') {|file| file.readlines.join.split("\n")}
 
 pwd = []
@@ -35,5 +46,11 @@ input_list.each do |input|
   end
 end
 
-p add_up_all_directories(file_paths_and_sizes).values.select {|num| num <= 100_000}.sum
+added_up = add_up_all_directories(file_paths_and_sizes)
+
+# part_1 answer:
+p added_up.values.select {|num| num <= 100_000}.sum
+
+# part_2 answer:
+p find_directory_to_delete(added_up)
 
