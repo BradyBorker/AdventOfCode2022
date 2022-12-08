@@ -7,26 +7,33 @@ def update_current_directory(dir, pwd)
   end
 end
 
-def add_up_all_sizes(file_sizes)
-  file_sizes.each do |path_size|
-    path = path_sizes[0]
-    size = path_sizes[1]
-    path[0..-1].each do |x|
-      p x
-    end
+def add_up_all_directories(file_paths_and_sizes, path_sizes=Hash.new(0))
+  if file_paths_and_sizes.length == 0
+    return path_sizes
   end
+  
+  paths, size = file_paths_and_sizes.first
+  
+  for index in 0..paths[0..-2].length-1
+    path_sizes[paths[0..index]] += size
+  end
+
+  file_paths_and_sizes.shift
+  
+  add_up_all_directories(file_paths_and_sizes, path_sizes)
 end
 
 input_list = File.open('input.txt', 'r') {|file| file.readlines.join.split("\n")}
 
 pwd = []
-file_sizes = Hash.new()
+file_paths_and_sizes = Hash.new()
 input_list.each do |input|
   if input[0..3] == "$ cd"
     update_current_directory(input[5..], pwd)
   elsif input[0..3] != "$ ls" && input[0..3] != "$ cd" && input.split(' ')[0] != 'dir'
-    file_sizes[pwd + [input.split(' ')[1]]] = input.split[0].to_i
+    file_paths_and_sizes[pwd + [input.split[1]]] = input.split[0].to_i
   end
 end
 
-add_up_all_sizes(file_sizes)
+p add_up_all_directories(file_paths_and_sizes).values.select {|num| num <= 100_000}.sum
+
