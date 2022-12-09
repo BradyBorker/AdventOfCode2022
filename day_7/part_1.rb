@@ -53,4 +53,3 @@ p added_up.values.select {|num| num <= 100_000}.sum
 
 # part_2 answer:
 p find_directory_to_delete(added_up)
-
