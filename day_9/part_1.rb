@@ -21,15 +21,15 @@ tail = [0, 0]
 head = [0, 0]
 previous_head_location = head.dup 
 visited = []
+visited.append(tail)
 
 for command in input
   direction = command.split(' ')[0]
   amount = command.split(' ')[1]
   
   amount.to_i.times do
-    visited.append(tail)
     previous_head_location = head.dup
-    
+
     head = move_head(head, direction)
 
     if find_distance_between(head, tail) > 1
