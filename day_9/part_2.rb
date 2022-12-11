@@ -98,7 +98,6 @@ for command in input
           knot_position = move_knot_diag(knot_position, position_sign)
 
         elsif find_distance_between(head_position, knot_position) == 2
-
           # Horz or Vert
           horz_vert = horz_or_vert(head_position, knot_position)
 
@@ -113,6 +112,7 @@ for command in input
           position_sign = diag_position_sign(leader, knot_position)
 
           knot_position = move_knot_diag(knot_position, position_sign)
+          
         elsif find_distance_between(leader, knot_position) == 2
           # Horz or vert
           horz_vert = horz_or_vert(leader, knot_position)
@@ -120,6 +120,7 @@ for command in input
           knot_position = move_knot_horz_vert(knot_position, horz_vert)
         end
       end
+
       if knot_number == 8
         visited.append(knot_position.dup)
       end
