@@ -19,7 +19,7 @@ input = File.open('input.txt', 'r') {|file| file.readlines.join.split("\n")}
 # x, y coords
 tail = [0, 0]
 head = [0, 0]
-previous_head_location = head.dup 
+previous_head_location = head.dup
 visited = []
 visited.append(tail)
 
