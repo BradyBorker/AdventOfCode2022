@@ -85,7 +85,6 @@ for command in input
   amount = command.split(' ')[1]
   
   amount.to_i.times do
-
     head_position = move_head(head_position, direction)
     knots.each_with_index do |knot_position, knot_number|
 
@@ -112,7 +111,7 @@ for command in input
           position_sign = diag_position_sign(leader, knot_position)
 
           knot_position = move_knot_diag(knot_position, position_sign)
-          
+
         elsif find_distance_between(leader, knot_position) == 2
           # Horz or vert
           horz_vert = horz_or_vert(leader, knot_position)
