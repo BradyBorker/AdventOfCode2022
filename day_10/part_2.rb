@@ -4,6 +4,8 @@ def add_pixel(pixel_display, sprite_position)
   else   
     pixel_display['pixels'].push(".")
   end
+  pixel_display['pixels_index'] += 1
+
   return pixel_display
 end
 
@@ -31,14 +33,12 @@ for command in commands
     2.times do |idx|
       cycle += 1
       add_pixel(pixel_display, sprite_position)
-      pixel_display['pixels_index'] += 1
       check_length(pixel_display)
     end
     sprite_position += value.to_i
   else
     cycle += 1
     add_pixel(pixel_display, sprite_position)
-    pixel_display['pixels_index'] += 1
     check_length(pixel_display)
   end
 
